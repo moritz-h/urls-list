@@ -1,0 +1,25 @@
+html, body {
+  width: 300px;
+}
+
+.panel {
+  width: 100%;
+}
+
+.urlText {
+  height: 400px;
+  margin-top: -1px;
+  resize: none;
+  white-space: pre;
+  width: 100%;
+}
+
+.buttonRow {
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.buttonRow > button {
+  margin: 5px;
+}

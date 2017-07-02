@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "URLs List",
+  "version": "0.1.0",
+  "description": "List the URLs of all tabs from the current window as copyable plaintext.",
+  "permissions": [
+    "tabs"
+  ],
+  "browser_action": {
+    "default_icon": "icons/icon.svg",
+    "browser_style": true,
+    "default_title": "URLs List",
+    "default_popup": "popup/urls-list.html"
+  },
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  }
+}
