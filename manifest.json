@@ -5,8 +5,17 @@
   "description": "List the URLs of all tabs from the current window as copyable plaintext.",
   "homepage_url": "https://github.com/moritz-h/urls-list",
   "permissions": [
+    "activeTab",
+    "clipboardWrite",
+    "contextMenus",
+    "notifications",
     "tabs"
   ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
   "browser_action": {
     "default_icon": "icons/icon.svg",
     "browser_style": true,
