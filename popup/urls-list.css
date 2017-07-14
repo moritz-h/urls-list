@@ -23,3 +23,7 @@ html, body {
 .buttonRow > button {
   margin: 5px;
 }
+
+.hide {
+  display: none;
+}

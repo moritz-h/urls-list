@@ -1,7 +1,11 @@
 let resetBtn = document.querySelector('.reset');
 let openBtn = document.querySelector('.open');
 let copyBtn = document.querySelector('.copy');
+let moreBtn = document.querySelector('.more');
+let moreBtnsDiv = document.querySelector('.moreBtns');
 let urlText = document.querySelector('.urlText');
+let sortAscBtn = document.querySelector('.sortAsc');
+let sortDescBtn = document.querySelector('.sortDesc');
 
 function listTabs() {
   browser.tabs.query({currentWindow: true}).then((tabs) => {
@@ -44,7 +48,42 @@ function copy() {
   urlText.value = tmp;
 }
 
+function more() {
+  if (moreBtnsDiv.classList.contains('hide')) {
+    moreBtnsDiv.classList.remove('hide');
+  } else {
+    moreBtnsDiv.classList.add('hide');
+  }
+}
+
+function sort(desc = false) {
+  let urls = urlText.value.split("\n");
+  let cleanUrls = [];
+  for (let i in urls) {
+    let clean = urls[i].trim();
+    if (clean !== '') {
+      cleanUrls.push(clean);
+    }
+  }
+  cleanUrls.sort();
+  if (desc) {
+    cleanUrls.reverse();
+  }
+  urlText.value = cleanUrls.join("\n") + "\n";
+}
+
+function sortAsc() {
+  sort(false);
+}
+
+function sortDesc() {
+  sort(true);
+}
+
 document.addEventListener("DOMContentLoaded", listTabs);
 resetBtn.addEventListener("click", listTabs);
 openBtn.addEventListener("click", open);
 copyBtn.addEventListener("click", copy);
+moreBtn.addEventListener("click", more);
+sortAscBtn.addEventListener("click", sortAsc);
+sortDescBtn.addEventListener("click", sortDesc);
