@@ -1,8 +1,10 @@
-browser.contextMenus.create({
-  id: "url-list-copy-urls",
-  title: "Copy URLs (all tabs)",
-  contexts: ["tab"],
-});
+if (!window.chrome) {
+    browser.contextMenus.create({
+      id: "url-list-copy-urls",
+      title: "Copy URLs (all tabs)",
+      contexts: ["tab"],
+    });
+}
 browser.contextMenus.onClicked.addListener(function (info, tab) {
   if (info.menuItemId === "url-list-copy-urls") {
     browser.tabs.query({currentWindow: true}).then((tabs) => {
