@@ -1,6 +1,7 @@
 let resetBtn = document.querySelector('.reset');
 let openBtn = document.querySelector('.open');
 let copyBtn = document.querySelector('.copy');
+let saveBtn = document.querySelector('.save');
 let moreBtn = document.querySelector('.more');
 let moreBtnsDiv = document.querySelector('.moreBtns');
 let urlText = document.querySelector('.urlText');
@@ -48,6 +49,19 @@ function copy() {
   urlText.value = tmp;
 }
 
+function save(){
+  let dl = document.createElement('a');
+
+  dl.download = 'urls-list-' + Date.now() + '.txt'; // filename
+  dl.href = window.URL.createObjectURL(
+    new Blob([urlText.value], {type: 'text/plain'}) // file content
+  );
+  dl.onclick = event => document.body.removeChild(event.target);
+  dl.style.display = 'none';
+  document.body.appendChild(dl);
+  dl.click();
+}
+
 function more() {
   if (moreBtnsDiv.classList.contains('hide')) {
     moreBtnsDiv.classList.remove('hide');
@@ -84,6 +98,7 @@ document.addEventListener("DOMContentLoaded", listTabs);
 resetBtn.addEventListener("click", listTabs);
 openBtn.addEventListener("click", open);
 copyBtn.addEventListener("click", copy);
+saveBtn.addEventListener("click", save);
 moreBtn.addEventListener("click", more);
 sortAscBtn.addEventListener("click", sortAsc);
 sortDescBtn.addEventListener("click", sortDesc);
