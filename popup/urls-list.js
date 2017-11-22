@@ -2,11 +2,9 @@ let resetBtn = document.querySelector('.reset');
 let openBtn = document.querySelector('.open');
 let copyBtn = document.querySelector('.copy');
 let saveBtn = document.querySelector('.save');
-let moreBtn = document.querySelector('.more');
-let moreBtnsDiv = document.querySelector('.moreBtns');
-let urlText = document.querySelector('.urlText');
 let sortAscBtn = document.querySelector('.sortAsc');
 let sortDescBtn = document.querySelector('.sortDesc');
+let urlText = document.querySelector('.urlText');
 
 function listTabs() {
   browser.tabs.query({currentWindow: true}).then((tabs) => {
@@ -62,14 +60,6 @@ function save(){
   dl.click();
 }
 
-function more() {
-  if (moreBtnsDiv.classList.contains('hide')) {
-    moreBtnsDiv.classList.remove('hide');
-  } else {
-    moreBtnsDiv.classList.add('hide');
-  }
-}
-
 function sort(desc = false) {
   let urls = urlText.value.split("\n");
   let cleanUrls = [];
@@ -99,6 +89,5 @@ resetBtn.addEventListener("click", listTabs);
 openBtn.addEventListener("click", open);
 copyBtn.addEventListener("click", copy);
 saveBtn.addEventListener("click", save);
-moreBtn.addEventListener("click", more);
 sortAscBtn.addEventListener("click", sortAsc);
 sortDescBtn.addEventListener("click", sortDesc);
