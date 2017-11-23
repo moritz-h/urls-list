@@ -10,16 +10,24 @@
   <div class="panel-section panel-section-header">
     <div class="text-section-header">URLs List</div>
   </div>
-  <textarea class="urlText"></textarea>
-  <div class="buttonRow">
-    <button class="reset">Reset</button>
-    <button class="open">Open</button>
-    <button class="copy">Copy</button>
+  <div class="browser-style filterBox">
+    <label for="filterInput">Filter:</label>
+    <input type="text" id="filterInput" class="filterInput">
+    <button class="browser-style resetFilter"><strong>&times;</strong></button>
+    <div class="sortButtons">
+      <button class="browser-style sortAsc">A-Z</button>
+      <button class="browser-style sortDesc">Z-A</button>
+    </div>
   </div>
+  <div class="filterWarning">
+    Remove filter to edit textbox.
+  </div>
+  <textarea class="browser-style urlText"></textarea>
   <div class="buttonRow">
-    <button class="save">Save as</button>
-    <button class="sortAsc">Sort A-Z</button>
-    <button class="sortDesc">Sort Z-A</button>
+    <button class="browser-style reset">Reset</button>
+    <button class="browser-style open">Open</button>
+    <button class="browser-style copy">Copy</button>
+    <button class="browser-style save">Save as</button>
   </div>
 </div>
 <script src="urls-list.js"></script>

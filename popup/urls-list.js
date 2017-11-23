@@ -4,9 +4,14 @@ let copyBtn = document.querySelector('.copy');
 let saveBtn = document.querySelector('.save');
 let sortAscBtn = document.querySelector('.sortAsc');
 let sortDescBtn = document.querySelector('.sortDesc');
+let resetFilterBtn = document.querySelector('.resetFilter');
 let urlText = document.querySelector('.urlText');
+let filterInput = document.querySelector('.filterInput');
+let filterWarning = document.querySelector('.filterWarning');
 
 function listTabs() {
+  disableFilterMode();
+
   browser.tabs.query({currentWindow: true}).then((tabs) => {
     let urls = '';
     for (let tab of tabs) {
@@ -47,7 +52,7 @@ function copy() {
   urlText.value = tmp;
 }
 
-function save(){
+function save() {
   let dl = document.createElement('a');
 
   dl.download = 'urls-list-' + Date.now() + '.txt'; // filename
@@ -84,6 +89,58 @@ function sortDesc() {
   sort(true);
 }
 
+let filterBackup = '';
+let filterMode = false;
+
+function enableFilterMode() {
+  if (!filterMode) {
+    filterBackup = urlText.value;
+    urlText.readOnly = true;
+    urlText.style.backgroundColor = '#ddd';
+    filterWarning.style.display = 'block';
+    filterMode = true;
+  }
+}
+
+function disableFilterMode() {
+  if (filterMode) {
+    urlText.value = filterBackup;
+    urlText.readOnly = false;
+    urlText.style.backgroundColor = '#fff';
+    filterWarning.style.display = 'none';
+    filterInput.value = '';
+    filterMode = false;
+  }
+}
+
+function filter(e) {
+  let val = e.target.value;
+  filterInput.style.backgroundColor = '#fff';
+  if (val !== '') {
+    enableFilterMode();
+    try {
+      let re = new RegExp(val, 'i');
+      let urls = filterBackup.split('\n');
+      let filteredUrls = [];
+      for (let i in urls) {
+        let clean = urls[i].trim();
+        if (clean !== '' && re.test(clean)) {
+          filteredUrls.push(clean);
+        }
+      }
+      urlText.value = filteredUrls.join('\n') + '\n';
+    } catch (ex) {
+      filterInput.style.backgroundColor = '#fbb';
+    }
+  } else {
+    disableFilterMode();
+  }
+}
+
+function resetFilter() {
+  disableFilterMode();
+}
+
 document.addEventListener('DOMContentLoaded', listTabs);
 resetBtn.addEventListener('click', listTabs);
 openBtn.addEventListener('click', open);
@@ -91,3 +148,5 @@ copyBtn.addEventListener('click', copy);
 saveBtn.addEventListener('click', save);
 sortAscBtn.addEventListener('click', sortAsc);
 sortDescBtn.addEventListener('click', sortDesc);
+resetFilterBtn.addEventListener('click', resetFilter);
+filterInput.addEventListener('input', filter);
