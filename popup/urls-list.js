@@ -10,7 +10,7 @@ function listTabs() {
   browser.tabs.query({currentWindow: true}).then((tabs) => {
     let urls = '';
     for (let tab of tabs) {
-      urls += tab.url + "\n";
+      urls += tab.url + '\n';
     }
     urlText.value = urls;
   });
@@ -23,13 +23,13 @@ function open() {
     for (let tab of tabs) {
       currentUrls.push(tab.url);
     }
-    let newUrls = urlText.value.split("\n");
+    let newUrls = urlText.value.split('\n');
     for (let url of newUrls) {
       // only open if new url is not empty string and is not already opened
-      if (url !== "" && currentUrls.indexOf(url) < 0) {
+      if (url !== '' && currentUrls.indexOf(url) < 0) {
         // prefix "http://" if it is not an url already
-        if (url.indexOf("://") < 0) {
-          url = "http://" + url;
+        if (url.indexOf('://') < 0) {
+          url = 'http://' + url;
         }
         browser.tabs.create({url: url});
       }
@@ -40,10 +40,10 @@ function open() {
 function copy() {
   let tmp = urlText.value;
   urlText.select();
-  document.execCommand("Copy");
+  document.execCommand('Copy');
 
   // workaround to not have text selected after button click
-  urlText.value = "";
+  urlText.value = '';
   urlText.value = tmp;
 }
 
@@ -61,7 +61,7 @@ function save(){
 }
 
 function sort(desc = false) {
-  let urls = urlText.value.split("\n");
+  let urls = urlText.value.split('\n');
   let cleanUrls = [];
   for (let i in urls) {
     let clean = urls[i].trim();
@@ -73,7 +73,7 @@ function sort(desc = false) {
   if (desc) {
     cleanUrls.reverse();
   }
-  urlText.value = cleanUrls.join("\n") + "\n";
+  urlText.value = cleanUrls.join('\n') + '\n';
 }
 
 function sortAsc() {
@@ -84,10 +84,10 @@ function sortDesc() {
   sort(true);
 }
 
-document.addEventListener("DOMContentLoaded", listTabs);
-resetBtn.addEventListener("click", listTabs);
-openBtn.addEventListener("click", open);
-copyBtn.addEventListener("click", copy);
-saveBtn.addEventListener("click", save);
-sortAscBtn.addEventListener("click", sortAsc);
-sortDescBtn.addEventListener("click", sortDesc);
+document.addEventListener('DOMContentLoaded', listTabs);
+resetBtn.addEventListener('click', listTabs);
+openBtn.addEventListener('click', open);
+copyBtn.addEventListener('click', copy);
+saveBtn.addEventListener('click', save);
+sortAscBtn.addEventListener('click', sortAsc);
+sortDescBtn.addEventListener('click', sortDesc);
