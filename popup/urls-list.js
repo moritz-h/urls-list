@@ -108,6 +108,7 @@ function disableFilterMode() {
     urlText.readOnly = false;
     urlText.style.backgroundColor = '#fff';
     filterWarning.style.display = 'none';
+    filterInput.style.backgroundColor = '#fff';
     filterInput.value = '';
     filterMode = false;
   }
