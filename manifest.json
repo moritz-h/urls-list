@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "URLs List",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "List the URLs of all tabs from the current window as copyable plaintext.",
   "homepage_url": "https://github.com/moritz-h/urls-list",
   "permissions": [
