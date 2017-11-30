@@ -11,7 +11,7 @@ browser.contextMenus.onClicked.addListener(function (info, tab) {
       let activeTabId = tab.id;
       let urls = '';
       for (let tab of tabs) {
-        urls += tab.url + "\r\n";
+        urls += tab.title + "\r\n" + tab.url + "\r\n\r\n";
         if (tab.active) {
           activeTabId = tab.id;
         }
