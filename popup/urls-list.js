@@ -15,7 +15,7 @@ function listTabs() {
   browser.tabs.query({currentWindow: true}).then((tabs) => {
     let urls = '';
     for (let tab of tabs) {
-      urls += tab.url + '\n';
+      urls += tab.title + "\n" + tab.url + '\n\n';
     }
     urlText.value = urls;
   });
@@ -28,7 +28,11 @@ function open() {
     for (let tab of tabs) {
       currentUrls.push(tab.url);
     }
-    let newUrls = urlText.value.split('\n');
+    let linesList = urlText.value.split('\n');
+    // filter out URL lines, ignoring title line[i+0] and empty line[i+2]
+    newUrls = linesList.filter(function(value, lineno, arr) {
+      return (lineno-1) % 3 == 0;
+    });
     for (let url of newUrls) {
       // only open if new url is not empty string and is not already opened
       if (url !== '' && currentUrls.indexOf(url) < 0) {
