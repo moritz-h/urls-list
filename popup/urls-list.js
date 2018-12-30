@@ -53,9 +53,18 @@ function copy() {
 }
 
 function save() {
+  let d = new Date();
+  let year = d.getFullYear();
+  let month = ('0' + (d.getMonth() + 1)).slice(-2);
+  let day = ('0' + d.getDate()).slice(-2);
+  let hour = ('0' + d.getHours()).slice(-2);
+  let min = ('0' + d.getMinutes()).slice(-2);
+  let sec = ('0' + d.getSeconds()).slice(-2);
+  let dateString = [year, month, day, hour, min, sec].join('-');
+
   let dl = document.createElement('a');
 
-  dl.download = 'urls-list-' + Date.now() + '.txt'; // filename
+  dl.download = 'urls-list-' + dateString + '.txt'; // filename
   dl.href = window.URL.createObjectURL(
     new Blob([urlText.value], {type: 'text/plain'}) // file content
   );
