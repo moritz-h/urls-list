@@ -4,11 +4,17 @@
   "version": "0.4.0",
   "description": "List the URLs of all tabs from the current window as copyable plaintext.",
   "homepage_url": "https://github.com/moritz-h/urls-list",
+  "applications": {
+    "gecko": {
+      "id": "{88664789-f91e-40e1-adb9-e4e9a8c48867}"
+    }
+  },
   "permissions": [
     "activeTab",
     "clipboardWrite",
     "contextMenus",
     "notifications",
+    "storage",
     "tabs"
   ],
   "background": {
@@ -21,6 +27,9 @@
     "browser_style": true,
     "default_title": "URLs List",
     "default_popup": "popup/urls-list.html"
+  },
+  "options_ui": {
+    "page": "options.html"
   },
   "icons": {
     "48": "icons/icon.svg",
