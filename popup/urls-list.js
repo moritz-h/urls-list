@@ -36,7 +36,10 @@ function open() {
         if (url.indexOf('://') < 0) {
           url = 'http://' + url;
         }
-        browser.tabs.create({url: url});
+        browser.tabs.create({
+          active: false,
+          url: url
+        });
       }
     }
   });
