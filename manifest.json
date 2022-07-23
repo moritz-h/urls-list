@@ -23,10 +23,15 @@
     ]
   },
   "browser_action": {
-    "default_icon": "icons/icon.svg",
     "browser_style": true,
+    "default_icon": "icons/icon.svg",
     "default_title": "URLs List",
-    "default_popup": "popup/urls-list.html"
+    "default_popup": "popup/urls-list.html",
+    "theme_icons": [{
+      "light": "icons/icon-light.svg",
+      "dark": "icons/icon.svg",
+      "size": 16
+    }]
   },
   "options_ui": {
     "page": "options.html"

@@ -49,3 +49,15 @@ html, body {
 .hide {
   display: none;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #42414D;
+    color: #FFF;
+  }
+
+  textarea.browser-style {
+    background-color: #42414D;
+    color: #FFF
+  }
+}
