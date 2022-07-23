@@ -63,8 +63,22 @@ html, body {
     color: #FFF;
   }
 
+  input {
+    background-color: #42414D;
+    color: #FFF
+  }
+
   textarea.browser-style {
     background-color: #42414D;
     color: #FFF
+  }
+
+  button.browser-style {
+    background-color: #2B2A33;
+    color: #FFF;
+  }
+
+  .urlTextFilterMode {
+    background-color: #333 !important;
   }
 }
