@@ -20,12 +20,15 @@ html, body {
   width: 150px;
 }
 
+.filterInputError {
+  background-color: #fbb;
+}
+
 .filterWarning {
   background-color: orange;
   text-align: center;
   padding-top: 3px;
   padding-bottom: 3px;
-  display: none;
 }
 
 .urlText {
@@ -34,6 +37,10 @@ html, body {
   resize: none;
   white-space: pre;
   width: 100%;
+}
+
+.urlTextFilterMode {
+  background-color: #ddd;
 }
 
 .buttonRow {

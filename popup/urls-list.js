@@ -115,8 +115,8 @@ function enableFilterMode() {
   if (!filterMode) {
     filterBackup = urlText.value;
     urlText.readOnly = true;
-    urlText.style.backgroundColor = '#ddd';
-    filterWarning.style.display = 'block';
+    urlText.classList.add("urlTextFilterMode")
+    filterWarning.classList.remove("hide");
     filterMode = true;
   }
 }
@@ -125,9 +125,9 @@ function disableFilterMode() {
   if (filterMode) {
     urlText.value = filterBackup;
     urlText.readOnly = false;
-    urlText.style.backgroundColor = '#fff';
-    filterWarning.style.display = 'none';
-    filterInput.style.backgroundColor = '#fff';
+    urlText.classList.remove("urlTextFilterMode");
+    filterWarning.classList.add("hide");
+    filterInput.classList.remove("filterInputError");
     filterInput.value = '';
     filterMode = false;
   }
@@ -135,7 +135,7 @@ function disableFilterMode() {
 
 function filter(e) {
   let val = e.target.value;
-  filterInput.style.backgroundColor = '#fff';
+  filterInput.classList.remove("filterInputError");
   if (val !== '') {
     enableFilterMode();
     try {
@@ -150,7 +150,7 @@ function filter(e) {
       }
       urlText.value = filteredUrls.join('\n') + '\n';
     } catch (ex) {
-      filterInput.style.backgroundColor = '#fbb';
+      filterInput.classList.add("filterInputError");
     }
   } else {
     disableFilterMode();
