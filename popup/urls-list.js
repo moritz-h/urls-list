@@ -9,6 +9,13 @@ let urlText = document.querySelector('.urlText');
 let filterInput = document.querySelector('.filterInput');
 let filterWarning = document.querySelector('.filterWarning');
 
+let alwaysOpenAllTabs = false;
+browser.storage.sync.get().then(settings => {
+  alwaysOpenAllTabs = ('openUrlsAlreadyOpened' in settings) ? settings.openUrlsAlreadyOpened : false;
+}, error => {
+  console.log(`Error: ${error}`);
+});
+
 function listTabs() {
   disableFilterMode();
 
@@ -31,7 +38,7 @@ function open() {
     let newUrls = urlText.value.split('\n');
     for (let url of newUrls) {
       // only open if new url is not empty string and is not already opened
-      if (url !== '' && currentUrls.indexOf(url) < 0) {
+      if (url !== '' && (alwaysOpenAllTabs || currentUrls.indexOf(url) < 0)) {
         // prefix "http://" if it is not an url already
         if (url.indexOf('://') < 0) {
           url = 'http://' + url;
