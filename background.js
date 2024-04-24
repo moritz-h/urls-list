@@ -36,7 +36,7 @@ function onContextMenuClick(info, tab) {
 function notifyError() {
   browser.notifications.create({
     "type": "basic",
-    "iconUrl": browser.extension.getURL("icons/error.svg"),
+    "iconUrl": browser.runtime.getURL("icons/error.svg"),
     "title": "Error!",
     "message": "Writing to clipboard is not possible!"
   });
