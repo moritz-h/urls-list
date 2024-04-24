@@ -6,7 +6,8 @@
   "homepage_url": "https://github.com/moritz-h/urls-list",
   "browser_specific_settings": {
     "gecko": {
-      "id": "{88664789-f91e-40e1-adb9-e4e9a8c48867}"
+      "id": "{88664789-f91e-40e1-adb9-e4e9a8c48867}",
+      "strict_min_version": "115.0"
     }
   },
   "permissions": [
@@ -34,7 +35,8 @@
     }]
   },
   "options_ui": {
-    "page": "options.html"
+    "page": "options.html",
+    "browser_style": true
   },
   "icons": {
     "48": "icons/icon.svg",
