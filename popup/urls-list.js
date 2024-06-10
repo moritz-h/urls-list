@@ -10,8 +10,10 @@ let filterInput = document.querySelector('.filterInput');
 let filterWarning = document.querySelector('.filterWarning');
 
 let alwaysOpenAllTabs = false;
+let discardTabs = false;
 browser.storage.sync.get().then(settings => {
   alwaysOpenAllTabs = ('openUrlsAlreadyOpened' in settings) ? settings.openUrlsAlreadyOpened : false;
+  discardTabs = ('openTabsAsDiscarded' in settings) ? settings.openTabsAsDiscarded : false;
 }, error => {
   console.log(`Error: ${error}`);
 });
@@ -45,6 +47,7 @@ function open() {
         }
         browser.tabs.create({
           active: false,
+          discarded: discardTabs,
           url: url
         });
       }
